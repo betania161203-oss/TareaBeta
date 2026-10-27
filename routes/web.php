@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,9 +11,4 @@ Route::get('/', function () {
 Route::get('/hola', function () {
     return '¡Hola desde Docker!';
 });
-use App\Models\Producto;
-
-Route::get('/productos', function () {
-    $productos = Producto::all();
-    return view('productos', compact('productos'));
-});
+Route::get('/productos', [ProductoController::class, 'index']);
